@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+/* =========================
+   ROOT RESET (CRITICAL)
+   ========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+/* THIS WAS LIKELY MISSING OR WRONG */
+body {
+  display: block;        /* ❌ NOT flex */
+  overflow-x: hidden;
+  background-color: var(--color-cream);
+}
+
+/* =========================
+   ROOT APP CONTAINER
+   ========================= */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;        /* ✅ THIS CENTERS EVERYTHING */
+}
+
+/* =========================
+   THEME VARIABLES
+   ========================= */
+
+:root {
+  --color-cream: #FAF3E0;
+  --color-light-cream: #FFF7E8;
+  --color-beige: #E6D3B1;
+  --color-coffee: #8B6F47;
+  --color-mocha: #6B4423;
+  --color-espresso: #3B2A1A;
+  --color-dark-brown: #4A3728;
+  --color-light-caramel: #dab996;
+  --color-whte: #FFFFFF;
+  --color-dark:#1b1917; 
+  --font-family-display: 'Playfair Display', serif;
+  --font-family-body: 'Outfit', sans-serif;
+}
+
+:root[data-theme='dark'] {
+  --color-cream: #0F0D0B;
+  --color-light-cream: #1A1612;
+  --color-beige: #3A2F24;
+  --color-coffee: #D4A574;
+  --color-mocha: #B8915F;
+  --color-espresso: #F5E6D3;
+  --color-dark-brown: #E6D3B1;
+  --color-light-caramel: #593a19;
+  --color-white: #311b0b;
+  --color-dark:#fac591;
+}
+
+/* =========================
+   GLOBAL TYPOGRAPHY
+   ========================= */
+
+body {
+  font-family: var(--font-family-body);
+  color: var(--color-espresso);
+}
+
+/* =========================
+   HELPERS
+   ========================= */
+
+.gradient-text {
+  background: linear-gradient(
+    to right,
+    var(--color-coffee),
+    var(--color-mocha)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-bg {
+  background: linear-gradient(
+    to bottom right,
+    var(--color-coffee),
+    var(--color-mocha)
+  );
+}

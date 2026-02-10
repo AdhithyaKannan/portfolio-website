@@ -1,0 +1,17 @@
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({
+  path: path.join(__dirname, '../.env'),
+});
+
+if (!process.env.RESEND_API_KEY) {
+  console.error('❌ RESEND_API_KEY not loaded');
+  process.exit(1);
+}
+
+console.log('✅ Env loaded');
