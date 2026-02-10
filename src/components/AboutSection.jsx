@@ -63,7 +63,7 @@ const AboutSection = () => {
               }}
             >
               <img
-                src="/src/assets/profile.jpg"
+                src="/assets/profile.jpg"
                 alt="Adhithya Kannan"
                 className="w-full h-full object-cover"
               />

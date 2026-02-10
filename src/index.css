@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 /* =========================
-   ROOT RESET (CRITICAL)
+   ROOT RESET (SAFE)
    ========================= */
 
 *,
@@ -16,24 +16,21 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
 }
 
-/* THIS WAS LIKELY MISSING OR WRONG */
+/* DO NOT FLEX THE BODY */
 body {
-  display: block;        /* ❌ NOT flex */
+  font-family: var(--font-family-body);
   overflow-x: hidden;
   background-color: var(--color-cream);
+  color: var(--color-espresso);
 }
 
-/* =========================
-   ROOT APP CONTAINER
-   ========================= */
-
+/* ROOT APP CONTAINER */
 #root {
   width: 100%;
   min-height: 100vh;
-  margin: 0 auto;        /* ✅ THIS CENTERS EVERYTHING */
 }
 
 /* =========================
@@ -49,8 +46,9 @@ body {
   --color-espresso: #3B2A1A;
   --color-dark-brown: #4A3728;
   --color-light-caramel: #dab996;
-  --color-whte: #FFFFFF;
-  --color-dark:#1b1917; 
+  --color-white: #ffffff;
+  --color-dark: #1b1917;
+
   --font-family-display: 'Playfair Display', serif;
   --font-family-body: 'Outfit', sans-serif;
 }
@@ -65,16 +63,7 @@ body {
   --color-dark-brown: #E6D3B1;
   --color-light-caramel: #593a19;
   --color-white: #311b0b;
-  --color-dark:#fac591;
-}
-
-/* =========================
-   GLOBAL TYPOGRAPHY
-   ========================= */
-
-body {
-  font-family: var(--font-family-body);
-  color: var(--color-espresso);
+  --color-dark: #fac591;
 }
 
 /* =========================

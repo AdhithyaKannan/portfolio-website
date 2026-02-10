@@ -7,17 +7,17 @@ import { motion } from 'framer-motion';
  */
 
 const techStack = [
-  { name: 'Python', logo: '/src/assets/tech/python.svg' },
-  { name: 'PyTorch', logo: '/src/assets/tech/pytorch.svg' },
-  { name: 'TensorFlow', logo: '/src/assets/tech/tensorflow.svg' },
-  { name: 'OpenCV', logo: '/src/assets/tech/opencv.svg' },
-  { name: 'Scikit-learn', logo: '/src/assets/tech/scikitlearnl.svg' },
-  { name: 'Raspberry Pi', logo: '/src/assets/tech/raspberrypi.svg' },
-  { name: 'PostgreSQL', logo: '/src/assets/tech/postgresql.svg' },
-  { name: 'Git', logo: '/src/assets/tech/git.svg' },
-  { name: 'GitHub', logo: '/src/assets/tech/github.svg' },
-  { name: 'Docker', logo: '/src/assets/tech/docker.svg' },
-  { name: 'Jira', logo: '/src/assets/tech/jira.svg' },
+  { name: 'Python', logo: '/assets/tech/python.svg' },
+  { name: 'PyTorch', logo: '/assets/tech/pytorch.svg' },
+  { name: 'TensorFlow', logo: '/assets/tech/tensorflow.svg' },
+  { name: 'OpenCV', logo: '/assets/tech/opencv.svg' },
+  { name: 'Scikit-learn', logo: '/assets/tech/scikitlearnl.svg' },
+  { name: 'Raspberry Pi', logo: '/assets/tech/raspberrypi.svg' },
+  { name: 'PostgreSQL', logo: '/assets/tech/postgresql.svg' },
+  { name: 'Git', logo: '/assets/tech/git.svg' },
+  { name: 'GitHub', logo: '/assets/tech/github.svg' },
+  { name: 'Docker', logo: '/assets/tech/docker.svg' },
+  { name: 'Jira', logo: '/assets/tech/jira.svg' },
 ];
 
 const TechBelt = () => {
