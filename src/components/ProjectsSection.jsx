@@ -2,20 +2,21 @@ import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
 import ProjectCard from './ProjectCard';
 
-const sectionVariants = {
-  hidden: {
-    opacity: 0,
-    y: 60,
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
   },
+};
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.8,
-      ease: 'easeOut',
-      when: 'beforeChildren',
-      staggerChildren: 0.12,
-    },
+    transition: { duration: 0.8, ease: 'easeOut' },
   },
 };
 
@@ -26,20 +27,18 @@ const ProjectsSection = () => {
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount: 0.25 }}
-      className="min-h-screen py-24"
+      viewport={{ once: false, amount: 0.15 }}   // 👈 lower trigger for mobile
+      className="py-20 md:py-24"
       style={{ backgroundColor: 'var(--color-light-cream)' }}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12">
+
+        {/* TITLE */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.4 }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
           className="text-center mb-14"
         >
           <h2
-            className="text-4xl md:text-5xl font-bold"
+            className="text-3xl md:text-5xl font-bold"
             style={{
               fontFamily: 'var(--font-family-display)',
               color: 'var(--color-espresso)',
@@ -49,7 +48,7 @@ const ProjectsSection = () => {
           </h2>
 
           <div
-            className="w-20 h-1 mx-auto mt-4 rounded-full"
+            className="w-16 md:w-20 h-1 mx-auto mt-4 rounded-full"
             style={{
               background:
                 'linear-gradient(to right, var(--color-coffee), var(--color-mocha))',
@@ -57,23 +56,16 @@ const ProjectsSection = () => {
           />
         </motion.div>
 
+        {/* GRID */}
         <motion.div
-          variants={{
-            hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.12,
-              },
-            },
-          }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          variants={containerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
         >
           {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
               project={project}
               index={index}
-              isInView={true}
             />
           ))}
         </motion.div>

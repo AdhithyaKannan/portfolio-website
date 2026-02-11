@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const cardVariants = {
   hidden: {
     opacity: 0,
-    y: 30,
+    y: 40,
   },
   visible: (index) => ({
     opacity: 1,
@@ -24,7 +24,7 @@ const hoverTransition = {
   mass: 0.6,
 };
 
-const ProjectCard = ({ project, index, isInView }) => {
+const ProjectCard = ({ project, index }) => {
   const navigate = useNavigate();
 
   return (
@@ -32,17 +32,17 @@ const ProjectCard = ({ project, index, isInView }) => {
       custom={index}
       variants={cardVariants}
       initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
+      animate="visible"
       whileHover={{
         y: -8,
         scale: 1.015,
         boxShadow: '0px 16px 32px rgba(0,0,0,0.10)',
       }}
       transition={hoverTransition}
-      className="bg-white rounded-3xl p-6 flex flex-col will-change-transform"
-      style={{ minHeight: 360 }}
+      className="bg-white rounded-3xl p-6 flex flex-col"
+      style={{ minHeight: 340 }}
     >
-      <h3 className="text-xl font-bold mb-2 leading-snug">
+      <h3 className="text-lg md:text-xl font-bold mb-2 leading-snug">
         {project.title}
       </h3>
 
@@ -50,7 +50,10 @@ const ProjectCard = ({ project, index, isInView }) => {
         {project.shortDescription}
       </p>
 
-      <ul className="text-xs text-light-cream-700 space-y-1.5 mb-4">
+      <ul
+        className="text-xs space-y-1.5 mb-4"
+        style={{ color: 'var(--color-dark-brown)' }}
+      >
         {project.bullets.slice(0, 3).map((bullet, i) => (
           <li key={i}>• {bullet}</li>
         ))}
