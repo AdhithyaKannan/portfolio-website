@@ -1,10 +1,5 @@
 import { motion } from 'framer-motion';
-
-/**
- * HOW TO ADD / REMOVE TECH:
- * 1. Put logo in: /public/assets/tech/
- * 2. Add entry to techStack below
- */
+import { useState, useEffect } from 'react';
 
 const techStack = [
   { name: 'Python', logo: '/assets/tech/python.svg' },
@@ -21,6 +16,15 @@ const techStack = [
 ];
 
 const TechBelt = () => {
+  const [activeTech, setActiveTech] = useState(null);
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    setIsTouch(
+      'ontouchstart' in window || navigator.maxTouchPoints > 0
+    );
+  }, []);
+
   return (
     <div className="relative overflow-hidden py-8">
       <motion.div
@@ -32,45 +36,72 @@ const TechBelt = () => {
           ease: 'linear',
         }}
       >
-        {[...techStack, ...techStack].map((tech, index) => (
-          <div
-            key={`${tech.name}-${index}`}
-            className="group flex flex-col items-center justify-center min-w-[100px]"
-          >
-            {/* LOGO CARD */}
-            <motion.div
-              whileHover={{
-                scale: 1.12,
-                y: -4,
-                boxShadow: '0 8px 20px var(--color-dark)',
-              }}
-              transition={{
-                type: 'spring',
-                stiffness: 300,
-                damping: 18,
-              }}
-              className="w-14 h-14 flex items-center justify-center rounded-lg"
-              style={{
-                backgroundColor: 'var(--color-light-caramel)',
-              }}
-            >
-              <img
-                src={tech.logo}
-                alt={tech.name}
-                className="w-8 h-8 object-contain pointer-events-none"
-                draggable={false}
-              />
-            </motion.div>
+        {[...techStack, ...techStack].map((tech, index) => {
+          const id = `${tech.name}-${index}`;
+          const isActive = activeTech === id;
 
-            {/* LABEL */}
-            <span
-              className="mt-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style={{ color: 'var(--color-dark-brown)' }}
+          return (
+            <motion.div
+              key={id}
+              className="flex flex-col items-center justify-center min-w-[100px] cursor-pointer"
+              onHoverStart={() => {
+                if (!isTouch) setActiveTech(id);
+              }}
+              onHoverEnd={() => {
+                if (!isTouch) setActiveTech(null);
+              }}
+              onClick={() => {
+                if (isTouch) {
+                  setActiveTech(id);
+
+                  setTimeout(() => {
+                    setActiveTech(null);
+                  }, 2000); // 2 seconds
+                }
+              }}
             >
-              {tech.name}
-            </span>
-          </div>
-        ))}
+              {/* LOGO */}
+              <motion.div
+                animate={{
+                  scale: isActive ? 1.15 : 1,
+                  y: isActive ? -4 : 0,
+                  backgroundColor: isActive
+                    ? 'var(--color-coffee)'
+                    : 'var(--color-light-caramel)',
+                  boxShadow: isActive
+                    ? '0 8px 20px rgba(0,0,0,0.15)'
+                    : '0 0 0 rgba(0,0,0,0)',
+                }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 280,
+                  damping: 18,
+                }}
+                className="w-14 h-14 flex items-center justify-center rounded-lg"
+              >
+                <img
+                  src={tech.logo}
+                  alt={tech.name}
+                  className="w-8 h-8 object-contain pointer-events-none"
+                  draggable={false}
+                />
+              </motion.div>
+
+              {/* LABEL */}
+              <motion.span
+                animate={{
+                  opacity: isActive ? 1 : 0,
+                  y: isActive ? 0 : 4,
+                }}
+                transition={{ duration: 0.25 }}
+                className="mt-2 text-xs"
+                style={{ color: 'var(--color-dark-brown)' }}
+              >
+                {tech.name}
+              </motion.span>
+            </motion.div>
+          );
+        })}
       </motion.div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const cardVariants = {
   hidden: {
@@ -10,7 +11,7 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: index * 0.1,
+      delay: index * 0.12,
       duration: 0.6,
       ease: 'easeOut',
     },
@@ -26,13 +27,15 @@ const hoverTransition = {
 
 const ProjectCard = ({ project, index }) => {
   const navigate = useNavigate();
+  const [activeTech, setActiveTech] = useState(null);
 
   return (
     <motion.div
       custom={index}
       variants={cardVariants}
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.25 }}
       whileHover={{
         y: -8,
         scale: 1.015,
@@ -59,18 +62,31 @@ const ProjectCard = ({ project, index }) => {
         ))}
       </ul>
 
+      {/* TECH STACK */}
       <div className="flex flex-wrap gap-2 mb-4">
         {project.tech.map((tech) => (
-          <span
+          <motion.span
             key={tech}
-            className="px-2.5 py-0.5 rounded-full text-[11px] font-medium"
-            style={{
-              backgroundColor: 'var(--color-light-cream)',
-              color: 'var(--color-coffee)',
+            onClick={() => {
+              setActiveTech(tech);
+              setTimeout(() => setActiveTech(null), 3000);
             }}
+            whileHover={{ scale: 1.05 }}
+            animate={{
+              backgroundColor:
+                activeTech === tech
+                  ? 'var(--color-coffee)'
+                  : 'var(--color-light-cream)',
+              color:
+                activeTech === tech
+                  ? 'var(--color-cream)'
+                  : 'var(--color-coffee)',
+            }}
+            transition={{ duration: 0.3 }}
+            className="px-2.5 py-0.5 rounded-full text-[11px] font-medium cursor-pointer"
           >
             {tech}
-          </span>
+          </motion.span>
         ))}
       </div>
 
