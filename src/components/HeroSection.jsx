@@ -21,16 +21,16 @@ const HeroSection = () => {
         <RippleGrid />
       </div>
 
-      <div className="max-w-7xl mx-auto px-8 md:px-16 w-full">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 w-full">
         <motion.div
           style={{ y, opacity }}
-          className="max-w-4xl mx-auto text-center relative z-10"
+          className="max-w-3xl mx-auto text-center relative z-10"
         >
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-bold leading-tight mb-6"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-4"
             style={{ fontFamily: 'var(--font-family-display)' }}
           >
             <span style={{ color: 'var(--color-espresso)' }}>
@@ -43,7 +43,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl font-light mb-12"
+            className="text-lg md:text-xl font-light mb-8"
             style={{ color: 'var(--color-dark-brown)' }}
           >
             Final-year Computer Science undergraduate focused on
@@ -58,7 +58,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <button
-              className="gradient-bg px-12 py-4 rounded-full text-lg font-semibold shadow-2xl transition-all duration-300 hover:-translate-y-1"
+              className="gradient-bg px-10 py-3 rounded-full text-base font-semibold shadow-xl transition-all duration-300 hover:-translate-y-1"
               style={{ color: 'var(--color-cream)' }}
               onClick={() =>
                 document
@@ -73,12 +73,12 @@ const HeroSection = () => {
       </div>
 
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 1.5 }}
       >
         <div
-          className="w-0.5 h-16 rounded-full"
+          className="w-0.5 h-12 rounded-full"
           style={{
             background:
               'linear-gradient(to bottom, transparent, var(--color-coffee))',

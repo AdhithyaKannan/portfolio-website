@@ -1,17 +1,18 @@
 const Footer = () => {
   return (
     <footer
-      className="py-8 px-8 md:px-16"
+      className="py-6 px-6 md:px-12"
       style={{
         backgroundColor: 'var(--color-espresso)',
         color: 'var(--color-cream)',
       }}
     >
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-sm">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
+        <p className="text-xs">
           © 2026 Adhithya Kannan. Built with intent and curiosity.
         </p>
-        <div className="flex gap-8">
+
+        <div className="flex gap-6 text-sm">
           <a
             href="#privacy"
             className="transition-colors"
@@ -25,6 +26,7 @@ const Footer = () => {
           >
             Privacy
           </a>
+
           <a
             href="#terms"
             className="transition-colors"

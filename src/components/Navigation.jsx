@@ -25,7 +25,6 @@ const Navigation = ({ activeSection }) => {
     return () => window.removeEventListener('scroll', onScroll);
   }, [isHome]);
 
-  /* ✅ CORE FIX */
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
 
@@ -51,27 +50,27 @@ const Navigation = ({ activeSection }) => {
         backdropFilter: scrolled || !isHome ? 'blur(14px)' : 'blur(0px)',
         boxShadow:
           scrolled || !isHome
-            ? '0 8px 30px rgba(0,0,0,0.12)'
+            ? '0 6px 24px rgba(0,0,0,0.10)'
             : 'none',
       }}
       transition={{ duration: 0.35, ease: 'easeOut' }}
     >
       <motion.div
         animate={{
-          maxWidth: scrolled || !isHome ? '100%' : '72rem',
-          paddingLeft: scrolled || !isHome ? '3rem' : '0rem',
-          paddingRight: scrolled || !isHome ? '3rem' : '0rem',
+          maxWidth: scrolled || !isHome ? '100%' : '64rem',
+          paddingLeft: scrolled || !isHome ? '2rem' : '0rem',
+          paddingRight: scrolled || !isHome ? '2rem' : '0rem',
         }}
         transition={{
           type: 'spring',
           stiffness: 120,
           damping: 20,
         }}
-        className="mx-auto flex items-center justify-between py-6"
+        className="mx-auto flex items-center justify-between py-4"
       >
         {/* LOGO */}
         <div
-          className="text-3xl font-bold cursor-pointer select-none"
+          className="text-2xl font-bold cursor-pointer select-none"
           style={{
             fontFamily: 'var(--font-family-display)',
             color: 'var(--color-espresso)',
@@ -82,12 +81,12 @@ const Navigation = ({ activeSection }) => {
         </div>
 
         {/* LINKS */}
-        <div className="flex items-center gap-10">
+        <div className="flex items-center gap-8">
           {['home', 'about', 'projects', 'contact'].map((section) => (
             <button
               key={section}
               onClick={() => scrollToSection(section)}
-              className="relative font-medium"
+              className="relative font-medium text-sm"
               style={{
                 color:
                   activeSection === section
@@ -109,7 +108,7 @@ const Navigation = ({ activeSection }) => {
 
           <button
             onClick={toggleTheme}
-            className="text-xl"
+            className="text-lg"
             aria-label="Toggle theme"
           >
             {theme === 'light' ? '🌙' : '☀️'}

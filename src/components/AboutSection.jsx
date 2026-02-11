@@ -19,19 +19,18 @@ const AboutSection = () => {
     <section
       id="about"
       ref={ref}
-      className="min-h-screen py-32"
+      className="min-h-screen py-24"
       style={{ backgroundColor: 'var(--color-cream)' }}
     >
-
-      <div className="max-w-7xl mx-auto px-8 md:px-16">
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-24"
+          className="text-center mb-16"
         >
           <h2
-            className="text-5xl md:text-6xl font-bold"
+            className="text-4xl md:text-5xl font-bold"
             style={{
               fontFamily: 'var(--font-family-display)',
               color: 'var(--color-espresso)',
@@ -40,7 +39,7 @@ const AboutSection = () => {
             About Me
           </h2>
           <div
-            className="w-24 h-1 mx-auto mt-6 rounded-full"
+            className="w-20 h-1 mx-auto mt-4 rounded-full"
             style={{
               background:
                 'linear-gradient(to right, var(--color-coffee), var(--color-mocha))',
@@ -48,7 +47,7 @@ const AboutSection = () => {
           />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-24 items-center mb-28">
+        <div className="grid md:grid-cols-2 gap-16 items-center mb-20">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
@@ -56,7 +55,7 @@ const AboutSection = () => {
             className="flex justify-center"
           >
             <div
-              className="w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4"
+              className="w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4"
               style={{
                 borderColor: 'var(--color-coffee)',
                 backgroundColor: 'var(--color-light-cream)',
@@ -74,10 +73,10 @@ const AboutSection = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="space-y-6 max-w-xl"
+            className="space-y-5 max-w-lg"
           >
             <p
-              className="text-lg leading-relaxed"
+              className="text-base leading-relaxed"
               style={{ color: 'var(--color-dark-brown)' }}
             >
               I’m a final-year Computer Science undergraduate specializing in
@@ -87,7 +86,7 @@ const AboutSection = () => {
             </p>
 
             <p
-              className="text-lg leading-relaxed"
+              className="text-base leading-relaxed"
               style={{ color: 'var(--color-dark-brown)' }}
             >
               I enjoy building end-to-end solutions — from data processing and
@@ -96,7 +95,7 @@ const AboutSection = () => {
             </p>
 
             <p
-              className="text-2xl italic mt-8 pl-6 border-l-4"
+              className="text-xl italic mt-6 pl-5 border-l-4"
               style={{
                 fontFamily: 'var(--font-family-display)',
                 color: 'var(--color-coffee)',
@@ -107,15 +106,16 @@ const AboutSection = () => {
             </p>
           </motion.div>
         </div>
+
         <h2
-            className="text-2xl md:text-2xl font-bold text-center mb-8"
-            style={{
-              fontFamily: 'var(--font-family-display)',
-              color: 'var(--color-espresso)',
-            }}
-          >
-            Tech Stack
-          </h2>
+          className="text-xl font-bold text-center mb-6"
+          style={{
+            fontFamily: 'var(--font-family-display)',
+            color: 'var(--color-espresso)',
+          }}
+        >
+          Tech Stack
+        </h2>
 
         <TechBelt />
       </div>

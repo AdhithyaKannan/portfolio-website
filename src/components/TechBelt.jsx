@@ -22,9 +22,9 @@ const techStack = [
 
 const TechBelt = () => {
   return (
-    <div className="relative overflow-hidden py-12">
+    <div className="relative overflow-hidden py-8">
       <motion.div
-        className="flex gap-5 w-max"
+        className="flex gap-4 w-max"
         animate={{ x: ['0%', '-50%'] }}
         transition={{
           repeat: Infinity,
@@ -35,21 +35,21 @@ const TechBelt = () => {
         {[...techStack, ...techStack].map((tech, index) => (
           <div
             key={`${tech.name}-${index}`}
-            className="group flex flex-col items-center justify-center min-w-[120px]"
+            className="group flex flex-col items-center justify-center min-w-[100px]"
           >
             {/* LOGO CARD */}
             <motion.div
               whileHover={{
-                scale: 1.15,
-                y: -6,
-                boxShadow: '0 10px 25px var(--color-dark)',
+                scale: 1.12,
+                y: -4,
+                boxShadow: '0 8px 20px var(--color-dark)',
               }}
               transition={{
                 type: 'spring',
                 stiffness: 300,
                 damping: 18,
               }}
-              className="w-16 h-16 flex items-center justify-center rounded-xl"
+              className="w-14 h-14 flex items-center justify-center rounded-lg"
               style={{
                 backgroundColor: 'var(--color-light-caramel)',
               }}
@@ -57,14 +57,14 @@ const TechBelt = () => {
               <img
                 src={tech.logo}
                 alt={tech.name}
-                className="w-10 h-10 object-contain pointer-events-none"
+                className="w-8 h-8 object-contain pointer-events-none"
                 draggable={false}
               />
             </motion.div>
 
             {/* LABEL */}
             <span
-              className="mt-3 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              className="mt-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{ color: 'var(--color-dark-brown)' }}
             >
               {tech.name}

@@ -25,25 +25,24 @@ const ContactSection = () => {
   }, []);
 
   const handleSubmit = async (e) => {
-        e.preventDefault();
-        dispatch(setStatus('sending'));
+    e.preventDefault();
+    dispatch(setStatus('sending'));
 
-        try {
-            const res = await fetch('http://localhost:5000/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData),
-            });
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-            if (!res.ok) throw new Error();
+      if (!res.ok) throw new Error();
 
-            dispatch(setStatus('success'));
-            setTimeout(() => dispatch(resetForm()), 3000);
-        } catch {
-            dispatch(setStatus('error'));
-        }
-   };
-
+      dispatch(setStatus('success'));
+      setTimeout(() => dispatch(resetForm()), 3000);
+    } catch {
+      dispatch(setStatus('error'));
+    }
+  };
 
   const handleInputChange = (field, value) => {
     dispatch(updateFormData({ [field]: value }));
@@ -66,18 +65,18 @@ const ContactSection = () => {
     <section
       id="contact"
       ref={ref}
-      className="min-h-screen py-32 px-8 md:px-16"
+      className="min-h-screen py-24 px-6 md:px-12"
       style={{ backgroundColor: 'var(--color-cream)' }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2
-            className="text-5xl md:text-6xl font-bold mb-4"
+            className="text-4xl md:text-5xl font-bold mb-3"
             style={{
               fontFamily: 'var(--font-family-display)',
               color: 'var(--color-espresso)',
@@ -85,15 +84,17 @@ const ContactSection = () => {
           >
             Let’s Connect
           </h2>
+
           <div
-            className="w-24 h-1 mx-auto rounded-full mb-6"
+            className="w-20 h-1 mx-auto rounded-full mb-4"
             style={{
               background:
                 'linear-gradient(to right, var(--color-coffee), var(--color-mocha))',
             }}
           />
+
           <p
-            className="text-xl"
+            className="text-lg"
             style={{ color: 'var(--color-dark-brown)' }}
           >
             Interested in research, collaborations, or impactful AI systems?
@@ -101,26 +102,26 @@ const ContactSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-5 gap-12">
+        <div className="grid md:grid-cols-5 gap-8">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="md:col-span-2 space-y-6"
+            className="md:col-span-2 space-y-5"
           >
             {contactInfo.map((info) => (
               <div
                 key={info.title}
-                className="flex gap-4 p-6 rounded-2xl border-2"
+                className="flex gap-3 p-5 rounded-2xl border-2"
                 style={{
                   backgroundColor: 'var(--color-light-cream)',
                   borderColor: 'var(--color-beige)',
                 }}
               >
-                <div className="text-3xl">{info.icon}</div>
+                <div className="text-2xl">{info.icon}</div>
                 <div>
                   <h3
-                    className="text-xl font-semibold mb-1"
+                    className="text-lg font-semibold mb-1"
                     style={{
                       fontFamily: 'var(--font-family-display)',
                       color: 'var(--color-espresso)',
@@ -128,7 +129,10 @@ const ContactSection = () => {
                   >
                     {info.title}
                   </h3>
-                  <p style={{ color: 'var(--color-dark-brown)' }}>
+                  <p
+                    className="text-sm"
+                    style={{ color: 'var(--color-dark-brown)' }}
+                  >
                     {info.value}
                   </p>
                 </div>
@@ -141,7 +145,7 @@ const ContactSection = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="md:col-span-3 space-y-6"
+            className="md:col-span-3 space-y-5"
           >
             {['name', 'email', 'phone'].map((field) => (
               <input
@@ -165,7 +169,7 @@ const ContactSection = () => {
                   handleInputChange(field, e.target.value)
                 }
                 required={field !== 'phone'}
-                className="w-full px-6 py-4 rounded-xl border-2 outline-none"
+                className="w-full px-5 py-3 rounded-xl border-2 outline-none text-sm"
                 style={{
                   backgroundColor: 'var(--color-light-cream)',
                   borderColor: 'var(--color-beige)',
@@ -175,14 +179,14 @@ const ContactSection = () => {
             ))}
 
             <textarea
-              rows="6"
+              rows="5"
               placeholder="Your Message"
               value={formData.message}
               onChange={(e) =>
                 handleInputChange('message', e.target.value)
               }
               required
-              className="w-full px-6 py-4 rounded-xl border-2 outline-none resize-none"
+              className="w-full px-5 py-3 rounded-xl border-2 outline-none resize-none text-sm"
               style={{
                 backgroundColor: 'var(--color-light-cream)',
                 borderColor: 'var(--color-beige)',
@@ -195,7 +199,7 @@ const ContactSection = () => {
               disabled={status === 'sending'}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full px-8 py-4 rounded-full text-lg font-semibold shadow-xl disabled:opacity-70"
+              className="w-full px-6 py-3 rounded-full text-base font-semibold shadow-xl disabled:opacity-70"
               style={{
                 background:
                   'linear-gradient(to bottom right, var(--color-coffee), var(--color-mocha))',

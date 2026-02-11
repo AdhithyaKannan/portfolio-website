@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react'; // ✅ FIX 1
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
 import { projectReports } from '../data/projectReports';
@@ -33,49 +33,48 @@ const ProjectDetails = () => {
   const project = projects.find((p) => p.id === projectId);
   const report = projectReports[projectId];
 
-  // ✅ FIX 2 — hook BEFORE return
   useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'instant', // or 'auto'
+      behavior: 'instant',
     });
   }, []);
 
   if (!project || !report) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-xl">Project not found.</p>
+        <p className="text-lg">Project not found.</p>
       </div>
     );
   }
 
   return (
     <motion.section
-      className="min-h-screen py-32"
+      className="min-h-screen py-24"
       variants={pageVariants}
       initial="hidden"
       animate="visible"
     >
-      <div className="max-w-4xl mx-auto px-8">
+      <div className="max-w-3xl mx-auto px-6">
         {/* TITLE */}
         <motion.h1
           variants={sectionVariants}
-          className="text-4xl md:text-5xl font-bold mb-14"
+          className="text-3xl md:text-4xl font-bold mb-10"
           style={{ fontFamily: 'var(--font-family-display)' }}
         >
           {project.title}
         </motion.h1>
 
         {/* REPORT SECTIONS */}
-        <div className="space-y-12 mb-20">
+        <div className="space-y-8 mb-14">
           {report.sections.map((section, index) => (
             <motion.div key={index} variants={sectionVariants}>
-              <h2 className="text-2xl font-semibold mb-4">
+              <h2 className="text-xl font-semibold mb-3">
                 {section.title}
               </h2>
 
-              <p className="text-lg leading-relaxed">
+              <p className="text-base leading-relaxed">
                 {section.content}
               </p>
             </motion.div>
